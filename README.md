@@ -17,4 +17,7 @@ This project focuses on detecting and decoding barcodes from images using Python
    pip install -r requirements.txt
    ```
 
+## Contributors
 
+- **Walid Alsafadi**
+- **Ameer Alzerei**
