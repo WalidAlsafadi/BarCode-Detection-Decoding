@@ -1,33 +1,26 @@
 import cv2
+import os
+import pytest
+from src.decode_barcode import decode_barcode
 
-def detect_barcode_contours(processed_image_path, original_image_path):
+# Define test paths
+TEST_IMAGE_PATH = "data/raw/sample_barcode.jpg"
+DEBUG_DIR = "tests/test_images/"
+DEBUG_DECODED_PATH = os.path.join(DEBUG_DIR, "debug_decoded.jpg")
+
+def test_decode_barcode():
     """
-    Detect the barcode region in the processed image using contours and highlight it on the original image.
+    Test barcode decoding function.
     """
-    # Load the processed and original images
-    processed_image = cv2.imread(processed_image_path, cv2.IMREAD_GRAYSCALE)
-    original_image = cv2.imread(original_image_path)
+    image = cv2.imread(TEST_IMAGE_PATH)
+    decoded_info = decode_barcode(image)
 
-    # Find contours
-    contours, _ = cv2.findContours(processed_image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    assert decoded_info is not None, "Decoding failed: No barcodes detected!"
+    assert len(decoded_info) > 0, "No barcodes were decoded!"
 
-    # Filter and draw contours
-    barcode_contour = None
-    largest_area = 0
-    for contour in contours:
-        x, y, w, h = cv2.boundingRect(contour)
-        aspect_ratio = w / float(h)
-        area = w * h
+    # Save debug decoded image
+    cv2.imwrite(DEBUG_DECODED_PATH, image)
+    assert os.path.exists(DEBUG_DECODED_PATH), "Debug decoded barcode image was not saved!"
 
-        # Filter contours based on area and aspect ratio
-        if area > 500 and 1.5 < aspect_ratio < 10.0:  # Adjust thresholds as needed
-            barcode_contour = contour
-            largest_area = area
-            cv2.rectangle(original_image, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
-    # Save the result
-    output_path = "data/processed/05102009083_detected.jpg"
-    cv2.imwrite(output_path, original_image)
-    print(f"Detection result saved at: {output_path}")
-
-    return barcode_contour
+if __name__ == "__main__":
+    pytest.main()

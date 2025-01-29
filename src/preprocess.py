@@ -1,33 +1,34 @@
 import cv2
+import numpy as np
 
 def preprocess_image(image_path):
     """
-    Preprocess the input image with improved contrast and morphological operations.
+    Preprocess the image to enhance barcode detection.
+    - Convert to grayscale
+    - Compute gradients
+    - Apply thresholding and morphological operations
     """
-    print(f"Loading image: {image_path}")
     image = cv2.imread(image_path)
     if image is None:
-        print(f"Failed to load image: {image_path}")
+        print(f"Error: Could not load image {image_path}")
         return None
-    else:
-        print(f"Image loaded successfully: {image_path}")
 
-    # Convert to grayscale
-    grayscale = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    # Apply adaptive thresholding to enhance contrast
-    binary = cv2.adaptiveThreshold(grayscale, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)
+    # Compute the gradient in the x-direction
+    gradX = cv2.Sobel(gray, ddepth=cv2.CV_32F, dx=1, dy=0, ksize=-1)
+    gradX = cv2.convertScaleAbs(gradX)
 
-    # Apply morphological closing with a larger kernel
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (6, 6))
-    closed_image = cv2.morphologyEx(binary, cv2.MORPH_CLOSE, kernel)
+    # Blur and apply binary threshold
+    blurred = cv2.GaussianBlur(gradX, (9, 9), 0)
+    _, binary = cv2.threshold(blurred, 225, 255, cv2.THRESH_BINARY)
 
-    # Apply dilation to merge nearby contours
-    dilated_image = cv2.dilate(closed_image, kernel, iterations=2)
+    # Morphological transformations to close gaps
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (21, 7))
+    closed = cv2.morphologyEx(binary, cv2.MORPH_CLOSE, kernel)
 
-    # Save debug images
-    cv2.imwrite("data/processed/debug_adaptive_threshold.jpg", binary)
-    cv2.imwrite("data/processed/debug_morph_closing.jpg", closed_image)
-    cv2.imwrite("data/processed/debug_dilated.jpg", dilated_image)
+    # Remove small blobs and noise
+    closed = cv2.erode(closed, None, iterations=4)
+    closed = cv2.dilate(closed, None, iterations=4)
 
-    return dilated_image
+    return closed
