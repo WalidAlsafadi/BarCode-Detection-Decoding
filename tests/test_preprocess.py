@@ -3,15 +3,15 @@ import os
 import sys
 import pytest
 
-# Add project root to Python path
+# Ensure the src directory is recognized as a module
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 
 from src.preprocess import preprocess_image
 
 # Define test paths
-TEST_IMAGE_PATH = "data/raw/sample_barcode.jpg"
+TEST_IMAGE_PATH = "data/raw/05102009140.jpg"
 DEBUG_DIR = "tests/test_images/"
-DEBUG_PROCESSED_PATH = os.path.join(DEBUG_DIR, "debug_preprocessed.jpg")
+DEBUG_PROCESSED_PATH = os.path.join(DEBUG_DIR, "debug_preprocessed1.jpg")
 
 def test_preprocess_image():
     """

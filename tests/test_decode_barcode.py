@@ -4,7 +4,7 @@ import pytest
 from src.decode_barcode import decode_barcode
 
 # Define test paths
-TEST_IMAGE_PATH = "data/raw/sample_barcode.jpg"
+TEST_IMAGE_PATH = "data/raw/05102009083.jpg"
 DEBUG_DIR = "tests/test_images/"
 DEBUG_DECODED_PATH = os.path.join(DEBUG_DIR, "debug_decoded.jpg")
 

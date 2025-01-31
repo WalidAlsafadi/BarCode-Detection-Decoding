@@ -20,7 +20,7 @@ def preprocess_image(image_path):
     gradX = cv2.convertScaleAbs(gradX)
 
     # Blur and apply binary threshold
-    blurred = cv2.GaussianBlur(gradX, (9, 9), 0)
+    blurred = cv2.GaussianBlur(gradX, (6, 6), 0)
     _, binary = cv2.threshold(blurred, 225, 255, cv2.THRESH_BINARY)
 
     # Morphological transformations to close gaps

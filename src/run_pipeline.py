@@ -1,11 +1,17 @@
 import os
+import sys
 import cv2
+
+# Ensure the src directory is recognized as a module
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
+
 from src.detect_barcode import detect_barcode
 from src.decode_barcode import decode_barcode
 
-# Change this to process only one image for now
-TEST_IMAGE_PATH = "data/raw/sample_barcode.jpg"
+# Directories
+INPUT_DIR = "data/raw"
 OUTPUT_DIR = "data/processed"
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 def process_single_image(image_path):
     """
@@ -16,7 +22,7 @@ def process_single_image(image_path):
     # Step 1: Detect Barcode
     detected_image, barcode_regions = detect_barcode(image_path)
 
-    if detected_image is not None and barcode_regions:
+    if detected_image is not None and len(barcode_regions) > 0:
         print("[SUCCESS] Barcode detected.")
 
         # Step 2: Decode the barcode(s)
@@ -38,5 +44,16 @@ def process_single_image(image_path):
     else:
         print("[ERROR] No barcode detected.")
 
+def process_images():
+    """
+    Processes all images in the input directory.
+    """
+    print("[INFO] Processing all images in the dataset...")
+    
+    for filename in os.listdir(INPUT_DIR):
+        if filename.endswith(".jpg") or filename.endswith(".png"):
+            input_path = os.path.join(INPUT_DIR, filename)
+            process_single_image(input_path)
+
 if __name__ == "__main__":
-    process_single_image(TEST_IMAGE_PATH)
+    process_single_image("data/raw/05102009140.jpg")  # Testing with one image for now
