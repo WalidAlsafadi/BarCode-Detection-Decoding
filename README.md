@@ -21,4 +21,3 @@ This project focuses on detecting and decoding barcodes from images using Python
 
 - **Walid Alsafadi**
 - **Ameer Alzerei**
-.
