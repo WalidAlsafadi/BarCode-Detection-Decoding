@@ -6,6 +6,10 @@ def decode_barcode(image):
     Decodes barcode(s) from an image.
     Returns a list of detected barcode data and their types.
     """
+    if image is None or image.size == 0:
+        # Skip invalid or blank regions without producing warnings
+        return []
+
     barcodes = decode(image)
     decoded_info = []
 
