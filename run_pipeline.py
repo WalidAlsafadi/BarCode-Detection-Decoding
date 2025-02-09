@@ -62,15 +62,14 @@ def process_images():
 
 if __name__ == "__main__":
     try:
-        """
         # For testing, process a single image first
-        test_image = os.path.join(INPUT_DIR, "v2YouTube_png.rf.215ab72747f5bc423561cb1ed9fe0ffd.jpg")
+        test_image = os.path.join(INPUT_DIR, "05102009170.jpg")
         if os.path.exists(test_image):
             process_single_image(test_image)
         else:
             print(f"[ERROR] Test image not found at {test_image}")
-        """
+
         # Uncomment below to process all images
-        process_images()
+        #process_images()
     except Exception as e:
         print(f"[CRITICAL ERROR] An unexpected error occurred: {e}")
