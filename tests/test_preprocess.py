@@ -8,7 +8,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 from src.preprocess import preprocess_image  # Standard import from the src module
 
 # Define test paths
-TEST_IMAGE_PATH = os.path.join("data/raw/05102009114.jpg")
+TEST_IMAGE_PATH = os.path.join("data/raw/05102009122.jpg")
 DEBUG_DIR = os.path.join("tests/test_images/")
 DEBUG_PROCESSED_PATH = os.path.join(DEBUG_DIR, "debug_preprocessed.jpg")
 
