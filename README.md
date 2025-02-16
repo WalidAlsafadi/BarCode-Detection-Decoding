@@ -105,7 +105,7 @@ Unit tests are located in the `tests/` directory. Each test validates the functi
 ## Contributors
 
 - **Walid Alsafadi**
-- **Ameer Alzerei**. 
+- **Ameer Alzerei**
 
 ## License
 
