@@ -3,18 +3,18 @@
 ## Project Tasks
 
 ### Core Functionality Review
-- [ ] Verify all test files under the `tests/` directory.
-  - [ ] Run the tests and ensure all modules are working as expected.
-  - [ ] Debug and fix any failing tests.
-  - [ ] Enhance existing test cases or add new ones if needed.
+- [x] Verify all test files under the `tests/` directory.
+  - [x] Run the tests and ensure all modules are working as expected.
+  - [x] Debug and fix any failing tests.
+  - [x] Enhance existing test cases or add new ones if needed.
 
-- [ ] Enhance Barcode Preprocessing
-  - [ ] Explore advanced preprocessing techniques (e.g., adaptive thresholding, image sharpening, edge enhancement).
-  - [ ] Test preprocessing enhancements with noisy, rotated, and blurred images.
-  - [ ] Compare results before and after enhancements.
+- [x] Enhance Barcode Preprocessing
+  - [x] Explore advanced preprocessing techniques (e.g., adaptive thresholding, image sharpening, edge enhancement).
+  - [x] Test preprocessing enhancements with noisy, rotated, and blurred images.
+  - [x] Compare results before and after enhancements.
 
-- [ ] Enhance Barcode Detection
-  - [ ] Review and optimize the detection process in `detect_barcode.py`.
+- [x] Enhance Barcode Detection
+  - [x] Review and optimize the detection process in `detect_barcode.py`.
   - [ ] Handle edge cases such as partially visible, overlapping, or distorted barcodes.
   - [ ] Improve logging for better debugging and analysis.
 
@@ -24,7 +24,7 @@
   - [ ] Test decoding for different barcode types (e.g., EAN-13, QR codes).
 
 ### Final Report
-- [ ] Prepare a comprehensive project report.
+- [x] Prepare a comprehensive project report.
   - **Sections to include:**
     1. **Introduction**: Purpose and objectives of the project.
     2. **Methodology**: Steps for barcode preprocessing, detection, and decoding.
@@ -44,26 +44,22 @@
   - [ ] Enable batch processing via the UI.
 
 ### Documentation
-- [ ] Update the `README.md` file with:
-  - [ ] Steps for any new features.
-  - [ ] Usage instructions.
-  - [ ] Contribution guidelines.
-
-- [ ] Prepare a `CONTRIBUTORS.md` file:
-  - [ ] Add details about the project contributors.
-  - [ ] Include instructions for future contributors.
+- [x] Update the `README.md` file with:
+  - [x] Steps for any new features.
+  - [x] Usage instructions.
+  - [x] Contribution guidelines.
 
 ---
 
 ## Collaboration and Communication
-- [ ] Use GitHub Issues or a shared document to assign and track tasks.
-- [ ] Ensure clear descriptions and references to relevant files for all tasks.
+- [x] Use GitHub Issues or a shared document to assign and track tasks.
+- [x] Ensure clear descriptions and references to relevant files for all tasks.
 
 ## Next Steps Checklist
-- [ ] Verify all test files.
+- [x] Verify all test files.
 - [ ] Improve preprocessing for noisy, rotated, or blurred barcodes.
 - [ ] Optimize detection for partially visible or distorted barcodes.
-- [ ] Test decoding for different barcode types.
-- [ ] Prepare a detailed final report with images and examples.
+- [x] Test decoding for different barcode types.
+- [x] Prepare a detailed final report with images and examples.
 - [ ] Optional: Create a user-friendly UI with Streamlit.
-- [ ] Document new enhancements and update the README.md.
+- [x] Document new enhancements and update the README.md.

@@ -18,21 +18,22 @@ BarCode-Detection-Decoding/
 │   ├── processed/
 │   └── raw/
 ├── docs/
+│   ├── Project - Instructions.pdf
+│   └── Efficient_Barcode_Detection_and_Decoding_Using_Digital_Image_Processing_Techniques.pdf
 ├── src/
 │   ├── __init__.py
 │   ├── preprocess.py
 │   ├── detect_barcode.py
 │   ├── decode_barcode.py
 │   ├── download_dataset.py
-│   ├── utils.py
-│   └── run_pipeline.py
+│   └── utils.py
 ├── tests/
-│   ├── __init__.py
 │   ├── test_images/
 │   ├── test_preprocess.py
 │   ├── test_detect_barcode.py
 │   ├── test_decode_barcode.py
 │   └── test_pipeline.py
+├── run_pipeline.py
 ├── requirements.txt
 ├── LICENSE
 ├── README.md
